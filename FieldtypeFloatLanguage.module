@@ -67,12 +67,12 @@ class FieldtypeFloatLanguage extends FieldtypeFloat implements FieldtypeLanguage
 	}
 
 	/**
-	 * Format value for output, basically typecasting to a float and sending to textformatters from FieldtypeFloat
+	 * Override sleep value function
 	 * 
 	 * @param Page $page
 	 * @param Field $field
 	 * @param LanguagesValueInterface|float $value
-	 * @return float
+	 * @return array
 	 *
 	 */
 	public function sleepValue(Page $page, Field $field, $value) {
