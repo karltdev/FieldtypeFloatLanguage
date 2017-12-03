@@ -82,11 +82,8 @@ class FieldtypeFloatLanguage extends FieldtypeFloat implements FieldtypeLanguage
 			$language = wire('languages')->get($languageName);
 			if(!$language->id) continue; 
 			if(is_null($precision)) $precision = self::getPrecision($languageValue);
-			if($language->id == wire('languages')->get("default")->id){
-				if(!is_string($languageValue)) $sleepValue['data'] = number_format($languageValue, $precision, '.', '');
-			}else{
-				if(!is_string($languageValue)) $sleepValue['data'.$language->id] = number_format($languageValue, $precision, '.', '');
-			}
+			$dataname = $language->isDefault() ? 'data' : 'data' . $language->id;
+			if(!is_string($languageValue)) $sleepValue[$dataname] = number_format($languageValue, $precision, '.', '');
 		}
 		return $sleepValue; 
 	}
